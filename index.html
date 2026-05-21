@@ -266,19 +266,22 @@
       left: 0;
       top: 0;
       bottom: 0;
-      width: 200px;
+      width: 150px;
       background: linear-gradient(to right, #0b0f19 0%, transparent 100%);
       z-index: 6;
       pointer-events: none;
     }
-    /* Radial vignette that fades outer tiles to background */
+    /* Right side soft gradient to blend towards edge */
     .s06-right::after {
       content: '';
       position: absolute;
-      inset: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 120px;
+      background: linear-gradient(to left, #0b0f19 0%, transparent 100%);
+      z-index: 6;
       pointer-events: none;
-      background: radial-gradient(circle at 75% 50%, transparent 20%, #0b0f19 80%);
-      z-index: 5;
     }
     .s06-grid {
       display: grid;
@@ -299,12 +302,13 @@
       cursor: pointer;
       user-select: none;
       position: relative;
-      background: #0f172a;
-      color: #475569;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      color: rgba(255, 255, 255, 0.25);
       
       /* Dormant state */
-      opacity: 0.12;
-      filter: grayscale(100%) brightness(0.4);
+      opacity: 0.35;
+      filter: grayscale(80%) brightness(0.7);
       transform: scale(0.96);
       
       /* Smooth transitions for spotlight movement */
@@ -312,6 +316,7 @@
                   filter 450ms cubic-bezier(0.16, 1, 0.3, 1),
                   transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
                   background-color 450ms cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 450ms cubic-bezier(0.16, 1, 0.3, 1),
                   color 450ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .s06-tooltip {
@@ -956,21 +961,23 @@ s06right.addEventListener('mousemove', (e) => {
       const intensity = 1 - (distance / maxRadius);
       const eased = Math.pow(intensity, 2); // Premium curve
 
-      tile.style.opacity = 0.12 + (eased * 0.88);
-      tile.style.filter = `grayscale(${100 - (eased * 100)}%) brightness(${0.4 + (eased * 0.6)})`;
+      tile.style.opacity = 0.35 + (eased * 0.65);
+      tile.style.filter = `grayscale(${80 - (eased * 80)}%) brightness(${0.7 + (eased * 0.3)})`;
       tile.style.transform = `scale(${0.96 + (eased * 0.08)})`;
       tile.style.backgroundColor = tile.dataset.color;
+      tile.style.borderColor = 'transparent';
       if (tile.classList.contains('dk')) {
         tile.style.color = '#111';
       } else {
         tile.style.color = '#fff';
       }
     } else {
-      tile.style.opacity = '0.12';
-      tile.style.filter = 'grayscale(100%) brightness(0.4)';
+      tile.style.opacity = '0.35';
+      tile.style.filter = 'grayscale(80%) brightness(0.7)';
       tile.style.transform = 'scale(0.96)';
-      tile.style.backgroundColor = '#0f172a';
-      tile.style.color = '#475569';
+      tile.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+      tile.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+      tile.style.color = 'rgba(255, 255, 255, 0.25)';
     }
   }
 });
@@ -978,11 +985,12 @@ s06right.addEventListener('mousemove', (e) => {
 s06right.addEventListener('mouseleave', () => {
   for (let i = 0; i < s06tiles.length; i++) {
     const tile = s06tiles[i];
-    tile.style.opacity = '0.12';
-    tile.style.filter = 'grayscale(100%) brightness(0.4)';
+    tile.style.opacity = '0.35';
+    tile.style.filter = 'grayscale(80%) brightness(0.7)';
     tile.style.transform = 'scale(0.96)';
-    tile.style.backgroundColor = '#0f172a';
-    tile.style.color = '#475569';
+    tile.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+    tile.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+    tile.style.color = 'rgba(255, 255, 255, 0.25)';
   }
 });
 
