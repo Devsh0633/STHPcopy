@@ -76,34 +76,104 @@
     /* ══════════════════════════════════════
        SECTION 02 — HERO  (dark navy bg, matching design ref image)
     ══════════════════════════════════════ */
-    .s02{background:#0B1628;padding:90px 0 80px;overflow:hidden;position:relative}
-    .s02::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 70% 50%,rgba(26,82,160,.25) 0%,transparent 70%);pointer-events:none}
-    .s02-inner{display:grid;grid-template-columns:55% 45%;gap:56px;align-items:center;position:relative}
-    .s02-eyebrow{display:inline-block;background:rgba(255,255,255,.12);color:#fff;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:5px 14px;border-radius:var(--r-pill);margin-bottom:20px}
-    .s02-h1{font-size:52px;font-weight:800;color:#fff;line-height:1.12;letter-spacing:-.02em}
-    .s02-h1 .accent{color:var(--teal)}
-    .s02-sub{font-size:18px;font-weight:400;color:#9CA3AF;line-height:1.7;max-width:500px;margin-top:20px}
-    .s02-cta-row{display:flex;gap:16px;align-items:center;margin-top:32px;flex-wrap:wrap}
-    .s02-right{position:relative}
-    .s02-dash{width:100%;border-radius:14px;box-shadow:0 24px 64px rgba(0,0,0,.5);background:linear-gradient(135deg,#1e3a6e 0%,#0f2347 100%);min-height:340px;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;overflow:hidden}
-    .s02-dash-bar{width:100%;height:48px;background:rgba(255,255,255,.07);display:flex;align-items:center;padding:0 20px;gap:12px;position:absolute;top:0}
-    .s02-dash-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.2)}
-    .s02-dash-label{color:rgba(255,255,255,.5);font-size:13px}
-    .s02-dash-body{padding:60px 24px 24px;width:100%}
-    .s02-stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:14px}
-    .s02-stat{background:rgba(255,255,255,.06);border-radius:8px;padding:14px;border:1px solid rgba(255,255,255,.08)}
-    .s02-stat-num{font-size:22px;font-weight:700;color:#fff}
-    .s02-stat-lab{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
-    .s02-stat-num.teal{color:var(--teal)}
-    .s02-panels{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-    .s02-panel{background:rgba(255,255,255,.06);border-radius:8px;padding:14px;border:1px solid rgba(255,255,255,.08)}
-    .s02-panel-title{font-size:11px;color:rgba(255,255,255,.4);margin-bottom:8px}
-    .s02-bar-wrap{display:flex;flex-direction:column;gap:6px}
-    .s02-bar-row{display:flex;align-items:center;gap:8px}
-    .s02-bar-label{font-size:10px;color:rgba(255,255,255,.4);width:80px;flex-shrink:0}
-    .s02-bar-track{flex:1;height:6px;background:rgba(255,255,255,.1);border-radius:3px;overflow:hidden}
-    .s02-bar-fill{height:100%;border-radius:3px}
-    .s02-bar-pct{font-size:10px;color:rgba(255,255,255,.5);width:36px;text-align:right}
+    .s02 {
+      background: #030712;
+      padding: 100px 0 90px;
+      overflow: hidden;
+      position: relative;
+    }
+    .s02::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 70% at 70% 50%, rgba(0, 144, 255, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .s02-inner {
+      display: grid;
+      grid-template-columns: 52% 48%;
+      gap: 56px;
+      align-items: center;
+      position: relative;
+    }
+    .s02-eyebrow {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.1);
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: var(--r-pill);
+      margin-bottom: 20px;
+    }
+    .s02-h1 {
+      font-size: 52px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.12;
+      letter-spacing: -.02em;
+    }
+    .s02-h1 .accent {
+      color: #0090ff; /* Glowing bright sky blue! */
+    }
+    .s02-sub {
+      font-size: 18px;
+      font-weight: 400;
+      color: #9CA3AF;
+      line-height: 1.7;
+      max-width: 500px;
+      margin-top: 20px;
+    }
+    .s02-cta-row {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      margin-top: 32px;
+      flex-wrap: wrap;
+    }
+    .btn-hero-blue {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #0090ff;
+      color: #ffffff;
+      border: none;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 16px;
+      padding: 14px 32px;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(0, 144, 255, 0.35);
+      transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+    }
+    .btn-hero-blue:hover {
+      background: #007ce2;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(0, 144, 255, 0.45);
+    }
+    .s02-right {
+      position: relative;
+    }
+    .s02-dash-container {
+      position: relative;
+      width: 100%;
+      border-radius: 16px;
+      overflow: visible;
+    }
+    .s02-dash-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 20px 80px rgba(0, 144, 255, 0.28);
+      transition: transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .s02-dash-img:hover {
+      transform: scale(1.015) translateY(-2px);
+      box-shadow: 0 25px 90px rgba(0, 144, 255, 0.35);
+    }
 
 
     /* ══════════════════════════════════════
@@ -638,44 +708,14 @@
         <h1 class="s02-h1">Outgrowing your Training Management Platform? <span class="accent">You're Not Alone.</span></h1>
         <p class="s02-sub">When scheduling is no longer your biggest challenge, it's time for a system that helps you understand and grow your training business — not just manage it.</p>
         <div class="s02-cta-row">
-          <a href="/request-a-demo/" class="btn-teal">Book a demo →</a>
+          <a href="/request-a-demo/" class="btn-hero-blue">Book a demo →</a>
         </div>
       </div>
 
-      <!-- Right: styled dashboard mockup -->
+      <!-- Right: styled dashboard mockup image -->
       <div class="s02-right">
-        <div class="s02-dash">
-          <div class="s02-dash-bar">
-            <div class="s02-dash-dot"></div><div class="s02-dash-dot"></div><div class="s02-dash-dot"></div>
-            <span class="s02-dash-label" style="margin-left:8px;color:rgba(0,191,179,.8);font-weight:600;font-size:12px">SimpliTrain</span>
-            <span class="s02-dash-label" style="margin-left:auto">Home &nbsp;·&nbsp; Admin &nbsp;·&nbsp; Course Catalog</span>
-          </div>
-          <div class="s02-dash-body">
-            <div class="s02-stat-row">
-              <div class="s02-stat"><div class="s02-stat-lab">Courses</div><div class="s02-stat-num">3,909</div></div>
-              <div class="s02-stat"><div class="s02-stat-lab">Users</div><div class="s02-stat-num teal">2,058</div></div>
-              <div class="s02-stat"><div class="s02-stat-lab">Class Enrolments</div><div class="s02-stat-num">1,027</div></div>
-              <div class="s02-stat"><div class="s02-stat-lab">Course Enrolments</div><div class="s02-stat-num">185</div></div>
-            </div>
-            <div class="s02-panels">
-              <div class="s02-panel">
-                <div class="s02-panel-title">COURSE COMPLETION</div>
-                <div class="s02-bar-wrap">
-                  <div class="s02-bar-row"><span class="s02-bar-label">In Progress</span><div class="s02-bar-track"><div class="s02-bar-fill" style="width:58%;background:var(--teal)"></div></div><span class="s02-bar-pct">28.6%</span></div>
-                  <div class="s02-bar-row"><span class="s02-bar-label">Completed</span><div class="s02-bar-track"><div class="s02-bar-fill" style="width:43%;background:#1A52A0"></div></div><span class="s02-bar-pct">42.9%</span></div>
-                  <div class="s02-bar-row"><span class="s02-bar-label">Expired</span><div class="s02-bar-track"><div class="s02-bar-fill" style="width:15%;background:#9CA3AF"></div></div><span class="s02-bar-pct">14.3%</span></div>
-                </div>
-              </div>
-              <div class="s02-panel">
-                <div class="s02-panel-title">RECENT ACTIVITY</div>
-                <div class="s02-bar-wrap">
-                  <div class="s02-bar-row"><span class="s02-bar-label">Sessions</span><div class="s02-bar-track"><div class="s02-bar-fill" style="width:70%;background:var(--teal)"></div></div><span class="s02-bar-pct">7 today</span></div>
-                  <div class="s02-bar-row"><span class="s02-bar-label">Logins</span><div class="s02-bar-track"><div class="s02-bar-fill" style="width:80%;background:#1A52A0"></div></div><span class="s02-bar-pct">20 today</span></div>
-                  <div class="s02-bar-row"><span class="s02-bar-label">Completions</span><div class="s02-bar-track"><div class="s02-bar-fill" style="width:50%;background:#6264A7"></div></div><span class="s02-bar-pct">10 today</span></div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="s02-dash-container">
+          <img src="./hero-dashboard.png" class="s02-dash-img" alt="SimpliTrain Dashboard Mockup">
         </div>
       </div>
 
