@@ -254,100 +254,84 @@
       overflow: hidden;
       position: relative;
       padding: 0;
-      height: 430px;
+      height: 480px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
     }
+    /* Left side soft gradient to blend behind text */
     .s06-right::before {
       content: '';
       position: absolute;
       left: 0;
       top: 0;
       bottom: 0;
-      width: 250px;
+      width: 200px;
       background: linear-gradient(to right, #0b0f19 0%, transparent 100%);
-      z-index: 5;
+      z-index: 6;
       pointer-events: none;
     }
+    /* Radial vignette that fades outer tiles to background */
     .s06-right::after {
       content: '';
       position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 100px;
-      background: linear-gradient(to left, #0b0f19 0%, transparent 100%);
-      z-index: 5;
+      inset: 0;
       pointer-events: none;
+      background: radial-gradient(circle at 75% 50%, transparent 20%, #0b0f19 80%);
+      z-index: 5;
     }
-    .s06-rows {
-      display: flex;
-      flex-direction: column;
+    .s06-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 60px);
       gap: 12px;
-      width: 100%;
-    }
-    .s06-row {
-      display: flex;
-      gap: 12px;
+      position: relative;
+      z-index: 1;
       width: max-content;
-    }
-    .s06-row:nth-child(odd) {
-      animation: scroll-l 40s linear infinite;
-    }
-    .s06-row:nth-child(even) {
-      animation: scroll-r 42s linear infinite;
-    }
-    @keyframes scroll-l {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-    @keyframes scroll-r {
-      0% { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
     }
     .s06-tile {
       width: 60px;
       height: 60px;
-      min-width: 60px;
       border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 26px;
-      color: #fff;
       cursor: pointer;
       user-select: none;
-      transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
-    }
-    .s06-tile:hover {
-      transform: scale(1.12);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-      z-index: 10;
-    }
-    .s06-tile.dk {
-      color: #111;
+      background: #0f172a;
+      color: #475569;
+      
+      /* Dormant state */
+      opacity: 0.12;
+      filter: grayscale(100%) brightness(0.4);
+      transform: scale(0.96);
+      
+      /* Smooth transitions for spotlight movement */
+      transition: opacity 450ms cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 450ms cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
+                  background-color 450ms cubic-bezier(0.16, 1, 0.3, 1),
+                  color 450ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .s06-tooltip {
       position: absolute;
       bottom: 100%;
       left: 50%;
-      transform: translateX(-50%) translateY(-6px);
+      transform: translateX(-50%) translateY(0);
       background: #1e293b;
       color: #fff;
       padding: 6px 12px;
-      font-size: 12px;
+      border-radius: 8px;
+      font-size: 11px;
       font-weight: 600;
-      border-radius: 6px;
       white-space: nowrap;
+      pointer-events: none;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 150ms cubic-bezier(0.16, 1, 0.3, 1), transform 150ms cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 4px 12px rgba(0,0,0,.25);
+      transition: opacity 200ms ease, transform 200ms ease, visibility 200ms ease;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
       z-index: 100;
-      pointer-events: none;
-      border: 1px solid #334155;
     }
     .s06-tooltip::after {
       content: '';
@@ -456,9 +440,21 @@
       .s06-layout{flex-direction:column;gap:36px}
       .s06-left{width:100%;padding:0 24px;text-align:center;box-sizing:border-box}
       .s06-h2{font-size:32px}
-      .s06-right{width:100%;padding-left:0;margin-top:12px;height:auto}
-      .s06-right::before{width:80px;background:linear-gradient(to right,#0b0f19 0%,transparent 100%)}
-      .s06-right::after{width:80px;background:linear-gradient(to left,#0b0f19 0%,transparent 100%)}
+      .s06-right{width:100%;padding-left:0;margin-top:12px;height:auto;display:flex;justify-content:center}
+      .s06-right::before{display:none}
+      .s06-right::after{
+        background: radial-gradient(circle at center, transparent 35%, #0b0f19 85%);
+      }
+      .s06-grid {
+        grid-template-columns: repeat(6, 46px);
+        gap: 8px;
+      }
+      .s06-tile {
+        width: 46px;
+        height: 46px;
+        font-size: 20px;
+        border-radius: 10px;
+      }
       .s08{flex-direction:column}
       .s08-left{width:100%;padding:40px 24px}
       .s08-right{width:100%;padding:24px}
@@ -673,8 +669,8 @@
       <p class="s06-sub">Integrate with your existing systems and extend SimpliTrain to support your unique workflows, delivery models, and growth needs.</p>
       <a href="/integrations/" class="btn-ghost-white s06-cta-link">See all integrations →</a>
     </div>
-    <div class="s06-right">
-      <div class="s06-rows" id="s06rows"></div>
+    <div class="s06-right" id="s06right">
+      <div class="s06-grid" id="s06grid"></div>
     </div>
   </div>
 </section>
@@ -917,23 +913,77 @@ const ICON_MAP = {
   "Power BI": "ti-chart-bar"
 };
 
-const rowsEl = document.getElementById('s06rows');
-ROWS.forEach(row=>{
-  const div = document.createElement('div');
-  div.className = 's06-row';
-  const quadrupled = [...row,...row,...row,...row];
-  quadrupled.forEach(t=>{
-    const tile = document.createElement('div');
-    tile.className = 's06-tile'+(t.dk?' dk':'');
-    tile.style.background = t.c;
-    const iconClass = ICON_MAP[t.n] || 'ti-apps';
-    tile.innerHTML = `
-      <i class="ti ${iconClass}"></i>
-      <span class="s06-tooltip">${t.n}</span>
-    `;
-    div.appendChild(tile);
-  });
-  rowsEl.appendChild(div);
+const gridEl = document.getElementById('s06grid');
+const ALL_INTEGRATIONS = ROWS.flat();
+const TOTAL_TILES = 72; // 12 columns * 6 rows
+const displayList = [];
+for (let i = 0; i < TOTAL_TILES; i++) {
+  displayList.push(ALL_INTEGRATIONS[i % ALL_INTEGRATIONS.length]);
+}
+
+displayList.forEach(t => {
+  const tile = document.createElement('div');
+  tile.className = 's06-tile' + (t.dk ? ' dk' : '');
+  tile.dataset.color = t.c;
+  tile.dataset.name = t.n;
+  const iconClass = ICON_MAP[t.n] || 'ti-apps';
+  tile.innerHTML = `
+    <i class="ti ${iconClass}"></i>
+    <span class="s06-tooltip">${t.n}</span>
+  `;
+  gridEl.appendChild(tile);
+});
+
+// Spotlight tracking on container
+const s06right = document.getElementById('s06right');
+const s06tiles = s06right.getElementsByClassName('s06-tile');
+
+s06right.addEventListener('mousemove', (e) => {
+  const rect = s06right.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
+
+  for (let i = 0; i < s06tiles.length; i++) {
+    const tile = s06tiles[i];
+    const tileRect = tile.getBoundingClientRect();
+    const tileX = (tileRect.left - rect.left) + (tileRect.width / 2);
+    const tileY = (tileRect.top - rect.top) + (tileRect.height / 2);
+
+    const distance = Math.hypot(mouseX - tileX, mouseY - tileY);
+    const maxRadius = 240; // Illumination radius
+
+    if (distance < maxRadius) {
+      const intensity = 1 - (distance / maxRadius);
+      const eased = Math.pow(intensity, 2); // Premium curve
+
+      tile.style.opacity = 0.12 + (eased * 0.88);
+      tile.style.filter = `grayscale(${100 - (eased * 100)}%) brightness(${0.4 + (eased * 0.6)})`;
+      tile.style.transform = `scale(${0.96 + (eased * 0.08)})`;
+      tile.style.backgroundColor = tile.dataset.color;
+      if (tile.classList.contains('dk')) {
+        tile.style.color = '#111';
+      } else {
+        tile.style.color = '#fff';
+      }
+    } else {
+      tile.style.opacity = '0.12';
+      tile.style.filter = 'grayscale(100%) brightness(0.4)';
+      tile.style.transform = 'scale(0.96)';
+      tile.style.backgroundColor = '#0f172a';
+      tile.style.color = '#475569';
+    }
+  }
+});
+
+s06right.addEventListener('mouseleave', () => {
+  for (let i = 0; i < s06tiles.length; i++) {
+    const tile = s06tiles[i];
+    tile.style.opacity = '0.12';
+    tile.style.filter = 'grayscale(100%) brightness(0.4)';
+    tile.style.transform = 'scale(0.96)';
+    tile.style.backgroundColor = '#0f172a';
+    tile.style.color = '#475569';
+  }
 });
 
 
