@@ -2661,6 +2661,36 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const dots = Array.from(dotsContainer.children);
 
+  // Autoplay functionality
+  let autoplayTimer = null;
+  const AUTOPLAY_INTERVAL = 4000;
+
+  function startAutoplay() {
+    stopAutoplay();
+    autoplayTimer = setInterval(() => {
+      const visibleCount = window.innerWidth >= 1024 ? 2.5 : (window.innerWidth >= 768 ? 1.5 : 1.1);
+      const maxIndex = totalCards - Math.ceil(visibleCount);
+      if (currentIndex < maxIndex && currentIndex < totalCards - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0; // Wrap back to beginning
+      }
+      updateCarousel();
+    }, AUTOPLAY_INTERVAL);
+  }
+
+  function stopAutoplay() {
+    if (autoplayTimer) {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+    }
+  }
+
+  function resetAutoplay() {
+    stopAutoplay();
+    startAutoplay();
+  }
+
   function updateCarousel() {
     const cardWidth = cards[0].offsetWidth;
     const gap = 20;
@@ -2680,6 +2710,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function jumpToIndex(index) {
     currentIndex = index;
     updateCarousel();
+    resetAutoplay();
   }
 
   nextBtn.addEventListener('click', () => {
@@ -2691,6 +2722,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentIndex++;
       updateCarousel();
     }
+    resetAutoplay();
   });
 
   prevBtn.addEventListener('click', () => {
@@ -2698,6 +2730,7 @@ document.addEventListener('DOMContentLoaded', () => {
       currentIndex--;
       updateCarousel();
     }
+    resetAutoplay();
   });
 
   // Swipe support for touch screens
@@ -2707,6 +2740,7 @@ document.addEventListener('DOMContentLoaded', () => {
   track.addEventListener('touchstart', (e) => {
     startX = e.touches[0].clientX;
     isSwiping = true;
+    stopAutoplay();
   }, { passive: true });
 
   track.addEventListener('touchmove', (e) => {
@@ -2730,10 +2764,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   track.addEventListener('touchend', () => {
     isSwiping = false;
+    startAutoplay();
   });
 
+  // Hover pauses autoplay, leaving resumes
+  track.addEventListener('mouseenter', stopAutoplay);
+  track.addEventListener('mouseleave', startAutoplay);
+
   window.addEventListener('resize', updateCarousel);
-  setTimeout(updateCarousel, 100);
+  setTimeout(() => {
+    updateCarousel();
+    startAutoplay();
+  }, 100);
 });
 </script>
 </body>
