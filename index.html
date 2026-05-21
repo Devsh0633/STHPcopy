@@ -268,20 +268,18 @@
       width: max-content;
       margin: 0 auto;
       
-      /* Premium CSS Mask-Image to fade grid transparency on the left and right */
-      /* This makes the grid transparent behind the text, without drawing a dark overlay on top! */
       -webkit-mask-image: radial-gradient(
         circle at 15% 20%,
-        transparent 0%,
-        transparent 28%,
-        rgba(0, 0, 0, 0.2) 48%,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.18) 25%,
+        rgba(0, 0, 0, 0.45) 50%,
         rgba(0, 0, 0, 1) 75%
       );
       mask-image: radial-gradient(
         circle at 15% 20%,
-        transparent 0%,
-        transparent 28%,
-        rgba(0, 0, 0, 0.2) 48%,
+        rgba(0, 0, 0, 0.15) 0%,
+        rgba(0, 0, 0, 0.18) 25%,
+        rgba(0, 0, 0, 0.45) 50%,
         rgba(0, 0, 0, 1) 75%
       );
     }
