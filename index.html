@@ -256,35 +256,8 @@
       position: relative;
       overflow: hidden;
       display: flex;
-      align-items: flex-end; /* Align elements to the bottom of the section */
-      justify-content: flex-end;
-    }
-    /* Diagonal/radial gradient overlay to keep text 100% legible and fade icons on top-left */
-    .s06-right::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(
-        circle at 20% 20%,
-        #0b0f19 0%,
-        #0b0f19 35%,
-        rgba(11, 15, 25, 0.8) 55%,
-        rgba(11, 15, 25, 0) 80%
-      );
-      z-index: 6;
-      pointer-events: none;
-    }
-    /* Right side soft fade towards edge of screen */
-    .s06-right::after {
-      content: '';
-      position: absolute;
-      right: 0;
-      top: 0;
-      bottom: 0;
-      width: 120px;
-      background: linear-gradient(to left, #0b0f19 0%, transparent 100%);
-      z-index: 6;
-      pointer-events: none;
+      align-items: flex-end;
+      justify-content: center; /* Center the massive grid horizontally */
     }
     .s06-grid {
       display: grid;
@@ -293,9 +266,25 @@
       position: relative;
       z-index: 1;
       width: max-content;
-      margin-left: auto;
-      margin-right: -100px; /* Shopify style offset offset */
+      margin: 0 auto;
       padding-bottom: 24px;
+      
+      /* Premium CSS Mask-Image to fade grid transparency on the left and right */
+      /* This makes the grid transparent behind the text, without drawing a dark overlay on top! */
+      -webkit-mask-image: radial-gradient(
+        circle at 15% 20%,
+        transparent 0%,
+        transparent 28%,
+        rgba(0, 0, 0, 0.2) 48%,
+        rgba(0, 0, 0, 1) 75%
+      );
+      mask-image: radial-gradient(
+        circle at 15% 20%,
+        transparent 0%,
+        transparent 28%,
+        rgba(0, 0, 0, 0.2) 48%,
+        rgba(0, 0, 0, 1) 75%
+      );
     }
     .s06-tile {
       width: 60px;
@@ -452,16 +441,15 @@
       .s06-left{position:relative;top:0;left:0;width:100%;padding:0 24px;text-align:center;box-sizing:border-box}
       .s06-h2{font-size:32px}
       .s06-right{width:100%;height:auto;display:flex;justify-content:center}
-      .s06-right::before{
-        display:block;
-        background: radial-gradient(circle at center, transparent 35%, #0b0f19 85%);
-      }
+      .s06-right::before{display:none}
       .s06-right::after{display:none}
       .s06-grid {
         grid-template-columns: repeat(6, 46px);
         gap: 8px;
         margin: 0 auto;
         padding-bottom: 0;
+        -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
+        mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 50%, rgba(0,0,0,0) 100%);
       }
       .s06-tile {
         width: 46px;
