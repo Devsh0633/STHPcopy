@@ -298,22 +298,26 @@
       user-select: none;
       position: relative;
       background: #ffffff;
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
       
-      /* Dormant state */
-      opacity: 0.15;
-      filter: grayscale(40%) brightness(0.9);
+      /* Dormant state - highly bright and colorful by default! */
+      opacity: 0.9;
+      filter: saturate(0.9);
       transform: scale(0.96);
       
       /* Smooth transitions for spotlight movement */
-      transition: opacity 450ms cubic-bezier(0.16, 1, 0.3, 1),
-                  filter 450ms cubic-bezier(0.16, 1, 0.3, 1),
-                  transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
-                  box-shadow 450ms cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1),
+                  filter 300ms cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .s06-tile i {
       color: var(--brand-color);
-      transition: color 450ms cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 30px;
+      font-weight: 800;
+      display: inline-flex;
+      transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
     }
     .s06-tooltip {
       position: absolute;
@@ -959,15 +963,15 @@ s06right.addEventListener('mousemove', (e) => {
       const intensity = 1 - (distance / maxRadius);
       const eased = Math.pow(intensity, 2); // Premium curve
 
-      tile.style.opacity = 0.15 + (eased * 0.85);
-      tile.style.filter = `grayscale(${40 - (eased * 40)}%) brightness(${0.9 + (eased * 0.1)})`;
+      tile.style.opacity = 0.9 + (eased * 0.1);
+      tile.style.filter = `saturate(${0.9 + (eased * 0.3)})`;
       tile.style.transform = `scale(${0.96 + (eased * 0.08)})`;
       tile.style.boxShadow = `0 ${eased * 10}px ${eased * 25}px rgba(0, 0, 0, ${eased * 0.35})`;
     } else {
-      tile.style.opacity = '0.15';
-      tile.style.filter = 'grayscale(40%) brightness(0.9)';
+      tile.style.opacity = '0.9';
+      tile.style.filter = 'saturate(0.9)';
       tile.style.transform = 'scale(0.96)';
-      tile.style.boxShadow = 'none';
+      tile.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.05)';
     }
   }
 });
@@ -975,10 +979,10 @@ s06right.addEventListener('mousemove', (e) => {
 s06right.addEventListener('mouseleave', () => {
   for (let i = 0; i < s06tiles.length; i++) {
     const tile = s06tiles[i];
-    tile.style.opacity = '0.15';
-    tile.style.filter = 'grayscale(40%) brightness(0.9)';
+    tile.style.opacity = '0.9';
+    tile.style.filter = 'saturate(0.9)';
     tile.style.transform = 'scale(0.96)';
-    tile.style.boxShadow = 'none';
+    tile.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.05)';
   }
 });
 
