@@ -202,24 +202,24 @@
      ══════════════════════════════════════ */
     .s06 {
       background: #0b0f19;
-      padding: 100px 0;
+      height: 580px; /* Perfect premium height like Shopify */
+      padding: 0;
       overflow: hidden;
       border-top: 1px solid #1F2937;
       position: relative;
     }
     .s06-layout {
-      display: flex;
-      align-items: center;
-      gap: 48px;
+      position: relative;
+      width: 100%;
+      height: 100%;
     }
     .s06-left {
-      box-sizing: content-box;
-      flex-shrink: 0;
-      width: 420px;
-      padding-right: 0;
-      padding-left: max(32px, calc((100vw - 1200px) / 2 + 32px));
+      position: absolute;
+      top: 100px;
+      left: max(32px, calc((100vw - 1200px) / 2 + 32px));
+      width: 480px;
       z-index: 10;
-      position: relative;
+      pointer-events: auto; /* Enable hover/clicks on inner links */
     }
     .s06-badge {
       display: inline-block;
@@ -233,7 +233,7 @@
       text-transform: uppercase;
     }
     .s06-h2 {
-      font-size: 42px;
+      font-size: 48px; /* Large premium headline */
       font-weight: 800;
       color: #fff;
       line-height: 1.15;
@@ -248,30 +248,33 @@
     }
     .s06-cta-link {
       margin-top: 32px;
+      display: inline-block;
     }
     .s06-right {
-      flex: 1;
-      overflow: hidden;
+      width: 100%;
+      height: 100%;
       position: relative;
-      padding: 0;
-      height: 480px;
+      overflow: hidden;
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: flex-end; /* Align elements to the bottom of the section */
+      justify-content: flex-end;
     }
-    /* Left side soft gradient to blend behind text */
+    /* Diagonal/radial gradient overlay to keep text 100% legible and fade icons on top-left */
     .s06-right::before {
       content: '';
       position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 150px;
-      background: linear-gradient(to right, #0b0f19 0%, transparent 100%);
+      inset: 0;
+      background: radial-gradient(
+        circle at 20% 20%,
+        #0b0f19 0%,
+        #0b0f19 35%,
+        rgba(11, 15, 25, 0.8) 55%,
+        rgba(11, 15, 25, 0) 80%
+      );
       z-index: 6;
       pointer-events: none;
     }
-    /* Right side soft gradient to blend towards edge */
+    /* Right side soft fade towards edge of screen */
     .s06-right::after {
       content: '';
       position: absolute;
@@ -285,11 +288,14 @@
     }
     .s06-grid {
       display: grid;
-      grid-template-columns: repeat(12, 60px);
+      grid-template-columns: repeat(24, 60px); /* 24 columns for massive dense layout! */
       gap: 12px;
       position: relative;
       z-index: 1;
       width: max-content;
+      margin-left: auto;
+      margin-right: -100px; /* Shopify style offset offset */
+      padding-bottom: 24px;
     }
     .s06-tile {
       width: 60px;
@@ -441,18 +447,21 @@
       .s05{padding:40px 0}
       .s05-h2{font-size:28px}
       .s05-grid{grid-template-columns:1fr}
-      .s06{padding:60px 0;background:#0b0f19}
-      .s06-layout{flex-direction:column;gap:36px}
-      .s06-left{width:100%;padding:0 24px;text-align:center;box-sizing:border-box}
+      .s06{height:auto;padding:60px 0;background:#0b0f19}
+      .s06-layout{display:flex;flex-direction:column;align-items:center;gap:36px;height:auto}
+      .s06-left{position:relative;top:0;left:0;width:100%;padding:0 24px;text-align:center;box-sizing:border-box}
       .s06-h2{font-size:32px}
-      .s06-right{width:100%;padding-left:0;margin-top:12px;height:auto;display:flex;justify-content:center}
-      .s06-right::before{display:none}
-      .s06-right::after{
+      .s06-right{width:100%;height:auto;display:flex;justify-content:center}
+      .s06-right::before{
+        display:block;
         background: radial-gradient(circle at center, transparent 35%, #0b0f19 85%);
       }
+      .s06-right::after{display:none}
       .s06-grid {
         grid-template-columns: repeat(6, 46px);
         gap: 8px;
+        margin: 0 auto;
+        padding-bottom: 0;
       }
       .s06-tile {
         width: 46px;
@@ -920,7 +929,7 @@ const ICON_MAP = {
 
 const gridEl = document.getElementById('s06grid');
 const ALL_INTEGRATIONS = ROWS.flat();
-const TOTAL_TILES = 72; // 12 columns * 6 rows
+const TOTAL_TILES = 120; // 24 columns * 5 rows = 120 tiles!
 const displayList = [];
 for (let i = 0; i < TOTAL_TILES; i++) {
   displayList.push(ALL_INTEGRATIONS[i % ALL_INTEGRATIONS.length]);
