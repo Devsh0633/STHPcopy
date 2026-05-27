@@ -1815,6 +1815,26 @@
     .s-cta-btn:hover .s-cta-btn-icon {
       transform: translateX(2px);
     }
+    .s-cta-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+    @media (max-width: 640px) {
+      .s-cta-buttons {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .s-cta-buttons .s-cta-btn, .s-cta-buttons .btn-hero-secondary {
+        width: 100%;
+        justify-content: center;
+        box-sizing: border-box;
+      }
+    }
 
     @media (max-width: 768px) {
       .s-cta {
@@ -3724,12 +3744,15 @@
 ══════════════════════════════════════ -->
 <section class="s-cta">
   <div class="s-cta-container">
-    <h2 class="s-cta-h2">Discover the All-in-One LMS built for you and your learners.</h2>
-    <p class="s-cta-p">Enjoy predictable costs with powerful LMS features.</p>
-    <a href="#" class="s-cta-btn">
-      Book a Demo
-      <span class="s-cta-btn-icon">➔</span>
-    </a>
+    <h2 class="s-cta-h2">See SimpliTrain run your ILT operations.</h2>
+    <p class="s-cta-p">30-minute demo, tailored to your training programs and existing stack. No slides - we'll show you the platform working on your scenario.</p>
+    <div class="s-cta-buttons">
+      <a href="/request-a-demo/" class="s-cta-btn">
+        Book a demo
+        <span class="s-cta-btn-icon">➔</span>
+      </a>
+      <a href="/pricing" class="btn-hero-secondary">See pricing</a>
+    </div>
   </div>
 </section>
 
