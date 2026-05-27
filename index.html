@@ -2765,11 +2765,371 @@
         padding: 28px 24px;
       }
     }
+
+    /* ══════════════════════════════════════
+       SITE HEADER / NAV
+    ══════════════════════════════════════ */
+    .st-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      background: rgba(5, 11, 24, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+      transition: background 300ms ease, box-shadow 300ms ease;
+    }
+    .st-nav.scrolled {
+      background: rgba(5, 11, 24, 0.97);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35);
+    }
+    .st-nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+    /* Logo */
+    .st-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      flex-shrink: 0;
+    }
+    .st-logo-mark {
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
+      background: linear-gradient(135deg, #1a52a0 0%, #7c3aed 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .st-logo-mark i {
+      color: #fff;
+      font-size: 18px;
+    }
+    .st-logo-text {
+      font-size: 17px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+    /* Nav links */
+    .st-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+    }
+    .st-nav-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.75);
+      text-decoration: none;
+      transition: color 200ms ease, background 200ms ease;
+      white-space: nowrap;
+    }
+    .st-nav-link:hover {
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .st-nav-link i {
+      font-size: 13px;
+      opacity: 0.6;
+    }
+    .st-nav-link.active {
+      color: #ffffff;
+    }
+    /* Right CTAs */
+    .st-nav-ctas {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .st-nav-login {
+      font-size: 14px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.7);
+      text-decoration: none;
+      padding: 7px 14px;
+      border-radius: 8px;
+      transition: color 200ms ease, background 200ms ease;
+    }
+    .st-nav-login:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.07);
+    }
+    .st-nav-demo {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #1a52a0;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 9px 20px;
+      border-radius: 99px;
+      text-decoration: none;
+      transition: background 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+      box-shadow: 0 2px 10px rgba(26, 82, 160, 0.35);
+    }
+    .st-nav-demo:hover {
+      background: #1461c0;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(26, 82, 160, 0.45);
+    }
+    /* Hamburger for mobile */
+    .st-nav-hamburger {
+      display: none;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      color: #fff;
+      font-size: 22px;
+      margin-left: auto;
+    }
+    /* Mobile drawer */
+    .st-nav-drawer {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0;
+      right: 0;
+      background: #05111f;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 16px 24px 24px;
+      z-index: 999;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .st-nav-drawer.open {
+      display: flex;
+    }
+    .st-nav-drawer .st-nav-link {
+      padding: 10px 12px;
+      font-size: 15px;
+    }
+    .st-nav-drawer .st-nav-demo {
+      margin-top: 8px;
+      justify-content: center;
+      padding: 12px 20px;
+    }
+    @media(max-width: 768px) {
+      .st-nav-links, .st-nav-login { display: none; }
+      .st-nav-hamburger { display: flex; }
+      .st-nav-demo { display: none; }
+    }
+
+    /* Body offset for fixed header */
+    body { padding-top: 68px; }
+
+    /* ══════════════════════════════════════
+       SITE FOOTER
+    ══════════════════════════════════════ */
+    .st-footer {
+      background: #050b18;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      padding: 72px 0 0;
+      color: rgba(255, 255, 255, 0.55);
+      font-size: 14px;
+    }
+    .st-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+    .st-footer-top {
+      display: grid;
+      grid-template-columns: 260px repeat(4, 1fr);
+      gap: 48px;
+      padding-bottom: 56px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    }
+    /* Brand column */
+    .st-footer-brand .st-logo {
+      margin-bottom: 16px;
+    }
+    .st-footer-brand p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.5);
+      margin-bottom: 24px;
+    }
+    .st-footer-socials {
+      display: flex;
+      gap: 10px;
+    }
+    .st-footer-social {
+      width: 36px;
+      height: 36px;
+      border-radius: 9px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 16px;
+      text-decoration: none;
+      transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+    }
+    .st-footer-social:hover {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border-color: rgba(255,255,255,0.2);
+    }
+    /* Link columns */
+    .st-footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 18px;
+    }
+    .st-footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .st-footer-col ul li a {
+      color: rgba(255,255,255,0.55);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 200ms ease;
+    }
+    .st-footer-col ul li a:hover {
+      color: #ffffff;
+    }
+    /* Badge links */
+    .st-footer-col ul li a.badge-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .st-footer-col ul li a .ft-badge {
+      font-size: 10px;
+      font-weight: 700;
+      background: rgba(0, 191, 179, 0.15);
+      color: #00bfb3;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    /* Bottom bar */
+    .st-footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 24px 0;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .st-footer-bottom-copy {
+      font-size: 13px;
+      color: rgba(255,255,255,0.3);
+    }
+    .st-footer-bottom-links {
+      display: flex;
+      gap: 24px;
+    }
+    .st-footer-bottom-links a {
+      font-size: 13px;
+      color: rgba(255,255,255,0.35);
+      text-decoration: none;
+      transition: color 200ms;
+    }
+    .st-footer-bottom-links a:hover {
+      color: rgba(255,255,255,0.7);
+    }
+    @media(max-width: 1024px) {
+      .st-footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 36px;
+      }
+      .st-footer-brand {
+        grid-column: span 2;
+      }
+    }
+    @media(max-width: 640px) {
+      .st-footer {
+        padding: 48px 0 0;
+      }
+      .st-footer-top {
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+      }
+      .st-footer-brand {
+        grid-column: span 2;
+      }
+      .st-footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+      }
+      .st-footer-bottom-links {
+        gap: 16px;
+        flex-wrap: wrap;
+      }
+    }
   </style>
 </head>
 <body>
 
-<!-- ══ S01: NAV — UNCHANGED. Keep existing Elementor implementation. ══ -->
+<!-- ══════════════════════════════════════
+     SITE HEADER / NAV
+══════════════════════════════════════ -->
+<header class="st-nav" id="stNav">
+  <div class="st-nav-inner">
+    <a href="/" class="st-logo">
+      <div class="st-logo-mark"><i class="ti ti-school"></i></div>
+      <span class="st-logo-text">SimpliTrain</span>
+    </a>
+    <nav class="st-nav-links">
+      <a href="/features/training-management-system/" class="st-nav-link">Platform <i class="ti ti-chevron-down"></i></a>
+      <a href="/features/" class="st-nav-link">Features</a>
+      <a href="/integrations/" class="st-nav-link">Integrations</a>
+      <a href="/pricing" class="st-nav-link">Pricing</a>
+      <a href="/resources/" class="st-nav-link">Resources <i class="ti ti-chevron-down"></i></a>
+      <a href="/blog/" class="st-nav-link">Blog</a>
+    </nav>
+    <div class="st-nav-ctas">
+      <a href="/login" class="st-nav-login">Log in</a>
+      <a href="/request-a-demo/" class="st-nav-demo"><i class="ti ti-calendar-event"></i> Book a demo</a>
+    </div>
+    <button class="st-nav-hamburger" id="stHamburger" aria-label="Toggle menu">
+      <i class="ti ti-menu-2"></i>
+    </button>
+  </div>
+</header>
+<!-- Mobile drawer -->
+<div class="st-nav-drawer" id="stDrawer">
+  <a href="/features/training-management-system/" class="st-nav-link">Platform</a>
+  <a href="/features/" class="st-nav-link">Features</a>
+  <a href="/integrations/" class="st-nav-link">Integrations</a>
+  <a href="/pricing" class="st-nav-link">Pricing</a>
+  <a href="/resources/" class="st-nav-link">Resources</a>
+  <a href="/blog/" class="st-nav-link">Blog</a>
+  <a href="/login" class="st-nav-link">Log in</a>
+  <a href="/request-a-demo/" class="st-nav-demo"><i class="ti ti-calendar-event"></i> Book a demo</a>
+</div>
 
 
 <!-- ══════════════════════════════════════
@@ -4254,5 +4614,114 @@ document.addEventListener('DOMContentLoaded', () => {
   }, 100);
 });
 </script>
+
+<!-- ══════════════════════════════════════
+     SITE FOOTER
+══════════════════════════════════════ -->
+<footer class="st-footer">
+  <div class="st-footer-inner">
+    <div class="st-footer-top">
+
+      <!-- Brand + tagline -->
+      <div class="st-footer-brand">
+        <a href="/" class="st-logo">
+          <div class="st-logo-mark"><i class="ti ti-school"></i></div>
+          <span class="st-logo-text">SimpliTrain</span>
+        </a>
+        <p>The complete platform to plan, deliver, assess, and measure instructor-led training at scale. Built for training companies and enterprise L&amp;D teams.</p>
+        <div class="st-footer-socials">
+          <a href="https://linkedin.com/company/simplitrain" class="st-footer-social" title="LinkedIn" aria-label="LinkedIn"><i class="ti ti-brand-linkedin"></i></a>
+          <a href="https://twitter.com/simplitrain" class="st-footer-social" title="X / Twitter" aria-label="Twitter"><i class="ti ti-brand-x"></i></a>
+          <a href="https://youtube.com/@simplitrain" class="st-footer-social" title="YouTube" aria-label="YouTube"><i class="ti ti-brand-youtube"></i></a>
+          <a href="https://www.g2.com/products/simplitrain" class="st-footer-social" title="G2" aria-label="G2"><i class="ti ti-star"></i></a>
+        </div>
+      </div>
+
+      <!-- Product -->
+      <div class="st-footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/features/training-management-system/">Training Management (TMS)</a></li>
+          <li><a href="/features/learning-management-system/">Learning Management (LMS)</a></li>
+          <li><a href="/features/virtual-classroom/">Virtual Classroom (vILT)</a></li>
+          <li><a href="/features/assessment-platform/">Assessments &amp; Proctoring</a></li>
+          <li><a href="/features/course-authoring/">Course Authoring</a></li>
+          <li><a href="/features/enterprise-learning-software/">Enterprise L&amp;D</a></li>
+          <li><a href="/pricing">Pricing</a></li>
+        </ul>
+      </div>
+
+      <!-- Solutions -->
+      <div class="st-footer-col">
+        <h4>Solutions</h4>
+        <ul>
+          <li><a href="/solutions/training-companies/">Training Companies</a></li>
+          <li><a href="/solutions/enterprise-ld/">Enterprise L&amp;D</a></li>
+          <li><a href="/solutions/manufacturing/">Manufacturing</a></li>
+          <li><a href="/solutions/healthcare/">Healthcare</a></li>
+          <li><a href="/solutions/it-training/">IT &amp; Tech Training</a></li>
+          <li><a href="/solutions/compliance-training/">Compliance Training</a></li>
+          <li><a href="/integrations/">All Integrations</a></li>
+        </ul>
+      </div>
+
+      <!-- Compare -->
+      <div class="st-footer-col">
+        <h4>Compare</h4>
+        <ul>
+          <li><a href="/vs/training-orchestra/">vs. Training Orchestra</a></li>
+          <li><a href="/vs/administrate/">vs. Administrate</a></li>
+          <li><a href="/vs/docebo/">vs. Docebo</a></li>
+          <li><a href="/vs/absorb-lms/">vs. Absorb LMS</a></li>
+          <li><a href="/vs/cornerstone/">vs. Cornerstone</a></li>
+          <li><a href="/vs/sap-successfactors/">vs. SAP SuccessFactors</a></li>
+        </ul>
+      </div>
+
+      <!-- Resources & Company -->
+      <div class="st-footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="/about/">About SimpliTrain</a></li>
+          <li><a href="/blog/">Blog &amp; Resources</a></li>
+          <li><a href="/customers/">Customer Stories</a></li>
+          <li><a href="/request-a-demo/" class="badge-link">Book a Demo <span class="ft-badge">Free</span></a></li>
+          <li><a href="/contact/">Contact Us</a></li>
+          <li><a href="/careers/">Careers</a></li>
+          <li><a href="/partner-program/">Partner Program</a></li>
+        </ul>
+      </div>
+
+    </div><!-- /st-footer-top -->
+
+    <div class="st-footer-bottom">
+      <p class="st-footer-bottom-copy">&copy; 2025 SimpliTrain. All rights reserved.</p>
+      <div class="st-footer-bottom-links">
+        <a href="/privacy-policy/">Privacy Policy</a>
+        <a href="/terms-of-service/">Terms of Service</a>
+        <a href="/security/">Security</a>
+        <a href="/sitemap.xml">Sitemap</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+/* ═══ NAV: scroll shrink + hamburger ═══ */
+const stNav = document.getElementById('stNav');
+const stHamburger = document.getElementById('stHamburger');
+const stDrawer = document.getElementById('stDrawer');
+
+window.addEventListener('scroll', () => {
+  stNav.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+stHamburger.addEventListener('click', () => {
+  const isOpen = stDrawer.classList.toggle('open');
+  stHamburger.querySelector('i').className = isOpen ? 'ti ti-x' : 'ti ti-menu-2';
+});
+</script>
+
 </body>
 </html>
