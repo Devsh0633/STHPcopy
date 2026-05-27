@@ -819,11 +819,20 @@
     }
     .s06-left {
       position: absolute;
-      top: 100px;
+      top: 90px;
       left: max(32px, calc((100vw - 1200px) / 2 + 32px));
-      width: 480px;
+      width: 500px;
       z-index: 10;
       pointer-events: auto; /* Enable hover/clicks on inner links */
+      
+      /* Glassmorphism backing card for maximum text visibility */
+      background: rgba(11, 15, 25, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 44px;
+      border-radius: 24px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
     }
     .s06-badge {
       display: inline-block;
@@ -837,21 +846,21 @@
       text-transform: uppercase;
     }
     .s06-h2 {
-      font-size: 48px; /* Large premium headline */
+      font-size: 44px; /* Slightly adjusted to fit glass card perfectly */
       font-weight: 800;
       color: #fff;
-      line-height: 1.15;
+      line-height: 1.2;
       margin-top: 18px;
       letter-spacing: -0.02em;
     }
     .s06-sub {
       font-size: 16px;
-      color: #9CA3AF;
-      line-height: 1.75;
+      color: #D1D5DB; /* Lighter color for higher contrast */
+      line-height: 1.7;
       margin-top: 16px;
     }
     .s06-cta-link {
-      margin-top: 32px;
+      margin-top: 28px;
       display: inline-block;
     }
     .s06-right {
@@ -913,12 +922,21 @@
                   transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
                   box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
     }
+    .s06-tile img {
+      width: 26px;
+      height: 26px;
+      object-fit: contain;
+      transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
     .s06-tile i {
       color: var(--brand-color);
       font-size: 30px;
       font-weight: 800;
       display: inline-flex;
       transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .s06-tile:hover i, .s06-tile:hover img {
+      transform: scale(1.15);
     }
     .s06-tooltip {
       position: absolute;
@@ -3420,8 +3438,9 @@
 <section class="s06">
   <div class="s06-layout">
     <div class="s06-left">
-      <h2 class="s06-h2">Integrate Without Limits.</h2>
-      <p class="s06-sub">Integrate with your existing systems and extend SimpliTrain to support your unique workflows, delivery models, and growth needs.</p>
+      <div class="s06-badge">Integrations</div>
+      <h2 class="s06-h2">Plugs into your stack. Doesn't fight it.</h2>
+      <p class="s06-sub">SSO, HRIS, CRM, video conferencing, payment, accounting, and your existing LMS or content libraries - SimpliTrain works with what you already run.</p>
       <a href="/integrations/" class="btn-ghost-white s06-cta-link">See all integrations →</a>
     </div>
     <div class="s06-right" id="s06right">
@@ -3853,6 +3872,56 @@ const ROWS = [
   [{n:"Google Drive",c:"#4285F4"},{n:"OneDrive",c:"#0078D4"},{n:"Dropbox",c:"#0061FF"},{n:"SharePoint",c:"#0078D4"},{n:"Notion",c:"#1A1A1A"},{n:"Slack",c:"#4A154B"},{n:"Gmail",c:"#EA4335"},{n:"Outlook",c:"#0078D4"}],
   [{n:"Zapier",c:"#FF4A00"},{n:"Make",c:"#6D00CC"},{n:"Power Automate",c:"#0066FF"},{n:"SCORM",c:"#009FE3"},{n:"xAPI",c:"#1F4E79"},{n:"Okta",c:"#007DC1"},{n:"QuickBooks",c:"#2CA01C"},{n:"Power BI",c:"#F2C811",dk:1}]
 ];
+const SLUG_MAP = {
+  "Zoom": "zoom",
+  "MS Teams": "microsoftteams",
+  "Google Meet": "googlemeet",
+  "Webex": "ciscowebex",
+  "GoToWebinar": "gotomeeting",
+  "Livestorm": "livestorm",
+  "BigBlueButton": "bigbluebutton",
+  "Whereby": "whereby",
+  "Salesforce": "salesforce",
+  "HubSpot": "hubspot",
+  "Mailchimp": "mailchimp",
+  "ActiveCampaign": "activecampaign",
+  "Zoho CRM": "zoho",
+  "Pipedrive": "pipedrive",
+  "Brevo": "brevo",
+  "Klaviyo": "klaviyo",
+  "Stripe": "stripe",
+  "PayPal": "paypal",
+  "Razorpay": "razorpay",
+  "Square": "square",
+  "Chargebee": "chargebee",
+  "Paddle": "paddle",
+  "Braintree": "braintree",
+  "Paytm": "paytm",
+  "Workday": "workday",
+  "BambooHR": "bamboohr",
+  "SAP HR": "sap",
+  "Oracle HCM": "oracle",
+  "ADP": "adp",
+  "Darwinbox": "darwinbox",
+  "Keka": "keka",
+  "GreytHR": "greythr",
+  "Google Drive": "googledrive",
+  "OneDrive": "microsoftonedrive",
+  "Dropbox": "dropbox",
+  "SharePoint": "microsoftsharepoint",
+  "Notion": "notion",
+  "Slack": "slack",
+  "Gmail": "gmail",
+  "Outlook": "microsoftoutlook",
+  "Zapier": "zapier",
+  "Make": "make",
+  "Power Automate": "microsoftpowerautomate",
+  "SCORM": "scorm",
+  "xAPI": "xapi",
+  "Okta": "okta",
+  "QuickBooks": "intuitquickbooks",
+  "Power BI": "powerbi"
+};
 
 const ICON_MAP = {
   "Zoom": "ti-video",
@@ -3918,9 +3987,16 @@ displayList.forEach(t => {
   tile.className = 's06-tile';
   tile.style.setProperty('--brand-color', t.c);
   tile.dataset.name = t.n;
+  
+  const slug = SLUG_MAP[t.n] || t.n.toLowerCase().replace(/[^a-z0-9]/g, '');
+  const hex = t.c.replace('#', '');
   const iconClass = ICON_MAP[t.n] || 'ti-apps';
+  
   tile.innerHTML = `
-    <i class="ti ${iconClass}"></i>
+    <img src="https://cdn.simpleicons.org/${slug}/${hex}" 
+         alt="${t.n}" 
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
+    <i class="ti ${iconClass}" style="display: none; color: ${t.c}; font-size: 26px;"></i>
     <span class="s06-tooltip">${t.n}</span>
   `;
   gridEl.appendChild(tile);
