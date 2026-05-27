@@ -991,6 +991,95 @@
 
 
     /* ══════════════════════════════════════
+       NEW SECTION — PRICING PROMO
+    ══════════════════════════════════════ */
+    .s-pricing-promo {
+      background: #0f172a;
+      padding: 100px 0;
+      color: #ffffff;
+      border-top: 1px solid #1e293b;
+    }
+    .s-pricing-promo-container {
+      display: flex;
+      gap: 60px;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+    .s-pricing-promo-left {
+      flex: 1;
+      padding-right: 20px;
+    }
+    .s-pricing-promo-h2 {
+      font-size: 36px;
+      font-weight: 800;
+      line-height: 1.25;
+      margin-bottom: 24px;
+      letter-spacing: -0.02em;
+    }
+    .s-pricing-promo-desc {
+      font-size: 17px;
+      color: #94a3b8;
+      line-height: 1.6;
+    }
+    .s-pricing-promo-right {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 16px;
+      padding: 40px;
+    }
+    .s-pricing-promo-h3 {
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      color: #38bdf8;
+    }
+    .s-pricing-promo-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .s-pricing-promo-list li {
+      font-size: 15px;
+      color: #cbd5e1;
+      line-height: 1.5;
+      padding-left: 28px;
+      position: relative;
+    }
+    .s-pricing-promo-list li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      top: 1px;
+      color: #38bdf8;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    .s-pricing-promo-list li strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    @media (max-width: 992px) {
+      .s-pricing-promo-container {
+        flex-direction: column;
+        gap: 40px;
+      }
+      .s-pricing-promo-left, .s-pricing-promo-right {
+        width: 100%;
+        padding: 0;
+      }
+      .s-pricing-promo-right {
+        padding: 30px;
+      }
+    }
+
+    /* ══════════════════════════════════════
        NEW SECTION — AI INSIGHTS WAVE SECTION
     ══════════════════════════════════════ */
     .s-ai {
@@ -3008,9 +3097,36 @@
 
 
 
+<!-- ══════════════════════════════════════
+     NEW SECTION — PRICING PROMO
+══════════════════════════════════════ -->
+<section class="s-pricing-promo">
+  <div class="s-pricing-promo-container">
+    <div class="s-pricing-promo-left">
+      <h2 class="s-pricing-promo-h2">Train as many people as you want. Pay for the platform, not the learners.</h2>
+      <p class="s-pricing-promo-desc">Most training platforms charge per learner, then fight you over what counts as "active." SimpliTrain doesn't. You pay a flat fee based on your administrators and instructors. Learners are unlimited.</p>
+    </div>
+    <div class="s-pricing-promo-right">
+      <h3 class="s-pricing-promo-h3">What this means for you:</h3>
+      <ul class="s-pricing-promo-list">
+        <li>
+          <strong>Train more, save more.</strong> Your per-learner cost drops as your program grows. With per-learner pricing, it goes up.
+        </li>
+        <li>
+          <strong>No renewal surprises.</strong> Your cost doesn't spike because hiring grew, turnover increased, or you ran a big compliance push.
+        </li>
+        <li>
+          <strong>Compliance and onboarding training without budget anxiety.</strong> Train every plant worker, every nurse, every new hire, without checking the meter.
+        </li>
+        <li>
+          <strong>Predictable budgeting.</strong> You know your platform cost a year out. Finance loves you.
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <!-- ══ S07: USE CASES — UNCHANGED. Keep existing pill/tag navigation. ══ -->
-
-
 <!-- ══════════════════════════════════════
      SECTION 08 — BLOG / RESOURCES
 ══════════════════════════════════════ -->
@@ -3064,86 +3180,6 @@
 
 
 
-<!-- ══════════════════════════════════════
-     NEW SECTION — AI INSIGHTS WAVY BANNER
-══════════════════════════════════════ -->
-<section class="s-ai">
-  
-  <!-- Top wave divider -->
-  <div class="s-ai-wave top">
-    <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;">
-      <path d="M0 0 C 480 50, 960 50, 1440 0 L 1440 60 L 0 60 Z" fill="#0b0f19"/>
-      <path d="M0 10 C 480 60, 960 30, 1440 0 L 1440 60 L 0 60 Z" fill="#e2e8f0" opacity="0.4"/>
-    </svg>
-  </div>
-
-  <div class="wrap s-ai-container">
-    
-    <!-- Left column: badge & heading -->
-    <div class="s-ai-left">
-      <h2 class="s-ai-h2">Get AI Insights on <span class="accent">SimpliTrain</span></h2>
-    </div>
-
-    <!-- Right column: five beautifully styled inline-SVG buttons -->
-    <div class="s-ai-right">
-      
-      <!-- 1. Google Gemini -->
-      <div class="s-ai-btn" title="Google Gemini">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px;">
-          <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="url(#gemini-grad-2)"/>
-          <defs>
-            <linearGradient id="gemini-grad-2" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#38bdf8"/>
-              <stop offset="0.3" stop-color="#3b82f6"/>
-              <stop offset="0.6" stop-color="#ec4899"/>
-              <stop offset="1" stop-color="#f59e0b"/>
-            </linearGradient>
-          </defs>
-        </svg>
-      </div>
-
-      <!-- 2. Anthropic Claude -->
-      <div class="s-ai-btn" title="Anthropic Claude">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px;">
-          <path d="M12 2L13.8 8.6L19.8 5.8L15.6 10.8L22 12L15.6 13.2L19.8 18.2L13.8 15.4L12 22L10.2 15.4L4.2 18.2L8.4 13.2L2 12L8.4 10.8L4.2 5.8L10.2 8.6L12 2Z" fill="#d97706"/>
-        </svg>
-      </div>
-
-      <!-- 3. Mistral AI -->
-      <div class="s-ai-btn" title="Mistral AI">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
-          <path d="M4 4H8V20H4V4ZM16 4H20V20H16V4ZM10 7.5L14 11.5L10 15.5L10 7.5Z" fill="#0d9488"/>
-        </svg>
-      </div>
-
-      <!-- 4. Llama / Cohere Loop -->
-      <div class="s-ai-btn" title="Cohere / Meta Llama">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
-          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20ZM12 8C9.79 8 8 9.79 8 12C8 14.21 9.79 16 12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8Z" fill="#111827"/>
-        </svg>
-      </div>
-
-      <!-- 5. OpenAI ChatGPT -->
-      <div class="s-ai-btn" title="OpenAI ChatGPT">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
-          <path d="M21.1 9.5C21.7 8.6 21.6 7.4 20.8 6.7C19.9 5.9 18.6 5.9 17.7 6.6L16.9 7.2C16.8 6.1 16.1 5.1 15 4.6C13.8 4.1 12.4 4.6 11.8 5.7L11.4 6.4C10.5 5.9 9.3 6 8.5 6.7C7.6 7.4 7.3 8.6 7.8 9.6L8.4 10.2C7.3 10.3 6.3 11 5.8 12.1C5.3 13.3 5.8 14.7 6.9 15.3L7.7 15.7C7.1 16.6 7.2 17.8 8 18.5C8.9 19.3 10.2 19.3 11.1 18.6L11.9 18C12 19.1 12.7 20.1 13.8 20.6C15 21.1 16.4 20.6 17 19.5L17.4 18.8C18.3 19.3 19.5 19.2 20.3 18.5C21.2 17.8 21.5 16.6 21 15.6L20.4 15C21.5 14.9 22.5 14.2 23 13.1C23.5 11.9 23 10.5 21.9 9.9L21.1 9.5Z" stroke="#111827" stroke-width="1.6" stroke-linejoin="round"/>
-          <path d="M12.4 9.1L9.6 13.9M15 10.5L9.6 11M14.4 12.9L11.6 8.1M9 11.5L14.4 11M9.6 9.1L12.4 13.9" stroke="#111827" stroke-width="1.6"/>
-        </svg>
-      </div>
-
-    </div>
-
-  </div>
-
-  <!-- Bottom wave divider -->
-  <div class="s-ai-wave bottom">
-    <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;">
-      <path d="M0 60 C 480 10, 960 10, 1440 60 L 1440 0 L 0 0 Z" fill="#0b0f19"/>
-      <path d="M0 50 C 480 0, 960 30, 1440 60 L 1440 0 L 0 0 Z" fill="#e2e8f0" opacity="0.4"/>
-    </svg>
-  </div>
-
-</section>
 
 
 <!-- ══════════════════════════════════════
@@ -3519,6 +3555,87 @@ FAQS.forEach((f,i)=>{
 
 
 </script>
+
+<!-- ══════════════════════════════════════
+     NEW SECTION — AI INSIGHTS WAVY BANNER
+══════════════════════════════════════ -->
+<section class="s-ai">
+  
+  <!-- Top wave divider -->
+  <div class="s-ai-wave top">
+    <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;">
+      <path d="M0 0 C 480 50, 960 50, 1440 0 L 1440 60 L 0 60 Z" fill="#0b0f19"/>
+      <path d="M0 10 C 480 60, 960 30, 1440 0 L 1440 60 L 0 60 Z" fill="#e2e8f0" opacity="0.4"/>
+    </svg>
+  </div>
+
+  <div class="wrap s-ai-container">
+    
+    <!-- Left column: badge & heading -->
+    <div class="s-ai-left">
+      <h2 class="s-ai-h2">Get AI Insights on <span class="accent">SimpliTrain</span></h2>
+    </div>
+
+    <!-- Right column: five beautifully styled inline-SVG buttons -->
+    <div class="s-ai-right">
+      
+      <!-- 1. Google Gemini -->
+      <div class="s-ai-btn" title="Google Gemini">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px;">
+          <path d="M12 2C12 7.5 16.5 12 22 12C16.5 12 12 16.5 12 22C12 16.5 7.5 12 2 12C7.5 12 12 7.5 12 2Z" fill="url(#gemini-grad-2)"/>
+          <defs>
+            <linearGradient id="gemini-grad-2" x1="2" y1="2" x2="22" y2="22" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#38bdf8"/>
+              <stop offset="0.3" stop-color="#3b82f6"/>
+              <stop offset="0.6" stop-color="#ec4899"/>
+              <stop offset="1" stop-color="#f59e0b"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+      <!-- 2. Anthropic Claude -->
+      <div class="s-ai-btn" title="Anthropic Claude">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 28px; height: 28px;">
+          <path d="M12 2L13.8 8.6L19.8 5.8L15.6 10.8L22 12L15.6 13.2L19.8 18.2L13.8 15.4L12 22L10.2 15.4L4.2 18.2L8.4 13.2L2 12L8.4 10.8L4.2 5.8L10.2 8.6L12 2Z" fill="#d97706"/>
+        </svg>
+      </div>
+
+      <!-- 3. Mistral AI -->
+      <div class="s-ai-btn" title="Mistral AI">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
+          <path d="M4 4H8V20H4V4ZM16 4H20V20H16V4ZM10 7.5L14 11.5L10 15.5L10 7.5Z" fill="#0d9488"/>
+        </svg>
+      </div>
+
+      <!-- 4. Llama / Cohere Loop -->
+      <div class="s-ai-btn" title="Cohere / Meta Llama">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
+          <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20ZM12 8C9.79 8 8 9.79 8 12C8 14.21 9.79 16 12 16C14.21 16 16 14.21 16 12C16 9.79 14.21 8 12 8Z" fill="#111827"/>
+        </svg>
+      </div>
+
+      <!-- 5. OpenAI ChatGPT -->
+      <div class="s-ai-btn" title="OpenAI ChatGPT">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 26px; height: 26px;">
+          <path d="M21.1 9.5C21.7 8.6 21.6 7.4 20.8 6.7C19.9 5.9 18.6 5.9 17.7 6.6L16.9 7.2C16.8 6.1 16.1 5.1 15 4.6C13.8 4.1 12.4 4.6 11.8 5.7L11.4 6.4C10.5 5.9 9.3 6 8.5 6.7C7.6 7.4 7.3 8.6 7.8 9.6L8.4 10.2C7.3 10.3 6.3 11 5.8 12.1C5.3 13.3 5.8 14.7 6.9 15.3L7.7 15.7C7.1 16.6 7.2 17.8 8 18.5C8.9 19.3 10.2 19.3 11.1 18.6L11.9 18C12 19.1 12.7 20.1 13.8 20.6C15 21.1 16.4 20.6 17 19.5L17.4 18.8C18.3 19.3 19.5 19.2 20.3 18.5C21.2 17.8 21.5 16.6 21 15.6L20.4 15C21.5 14.9 22.5 14.2 23 13.1C23.5 11.9 23 10.5 21.9 9.9L21.1 9.5Z" stroke="#111827" stroke-width="1.6" stroke-linejoin="round"/>
+          <path d="M12.4 9.1L9.6 13.9M15 10.5L9.6 11M14.4 12.9L11.6 8.1M9 11.5L14.4 11M9.6 9.1L12.4 13.9" stroke="#111827" stroke-width="1.6"/>
+        </svg>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Bottom wave divider -->
+  <div class="s-ai-wave bottom">
+    <svg viewBox="0 0 1440 60" fill="none" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="display: block; width: 100%; height: 100%;">
+      <path d="M0 60 C 480 10, 960 10, 1440 60 L 1440 0 L 0 0 Z" fill="#0b0f19"/>
+      <path d="M0 50 C 480 0, 960 30, 1440 60 L 1440 0 L 0 0 Z" fill="#e2e8f0" opacity="0.4"/>
+    </svg>
+  </div>
+
+</section>
 
 <!-- ══════════════════════════════════════
      SITE FOOTER
