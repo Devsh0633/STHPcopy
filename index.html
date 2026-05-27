@@ -257,17 +257,61 @@
        SECTION 03 — FEATURE TABS  (soft lavender bg, matching design ref)
     ══════════════════════════════════════ */
     .s03{background:#F5F0FB;padding:100px 0}
-    .s03-head{text-align:center;margin-bottom:56px}
+    .s03-head{text-align:center;margin-bottom:40px}
     .s03-eyebrow{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);background:var(--light-teal);padding:4px 12px;border-radius:var(--r-pill);margin-bottom:12px}
     .s03-h2{font-size:38px;font-weight:700;color:var(--dark);line-height:1.2}
     .s03-h2 .g1{color:#FF6B6B}
     .s03-h2 .g2{color:#A855F7}
 
-    /* Tab strip */
-    .s03-strip{display:flex;border-bottom:2px solid #E2D9F3;gap:0;overflow-x:auto}
-    .s03-tab{background:none;border:none;border-bottom:3px solid transparent;margin-bottom:-2px;padding:13px 28px;font-size:15px;font-weight:500;color:#6B7280;cursor:pointer;white-space:nowrap;transition:color 150ms}
-    .s03-tab:hover{color:var(--dark)}
-    .s03-tab.active{font-weight:700;color:var(--dark);border-bottom-color:var(--teal)}
+    /* Tab strip — Segmented Control */
+    .s03-strip {
+      display: inline-flex;
+      background: rgba(124, 58, 237, 0.05); /* Soft translucent brand-purple background */
+      padding: 6px;
+      border-radius: 16px;
+      gap: 6px;
+      overflow-x: auto;
+      border-bottom: none;
+      margin: 0 auto 48px;
+      justify-content: center;
+      -webkit-overflow-scrolling: touch;
+    }
+    .s03-tab {
+      background: none;
+      border: none;
+      padding: 12px 24px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #6b7280;
+      cursor: pointer;
+      white-space: nowrap;
+      border-radius: 12px;
+      transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .s03-tab i {
+      font-size: 17px;
+      color: #9ca3af;
+      transition: color 200ms, transform 200ms;
+    }
+    .s03-tab:hover {
+      color: #7c3aed;
+      background: rgba(124, 58, 237, 0.06);
+    }
+    .s03-tab:hover i {
+      color: #7c3aed;
+      transform: scale(1.05);
+    }
+    .s03-tab.active {
+      color: #ffffff;
+      background: #7c3aed; /* Brand purple active */
+      box-shadow: 0 4px 14px rgba(124, 58, 237, 0.25);
+    }
+    .s03-tab.active i {
+      color: #ffffff;
+    }
 
     /* Panel */
     .s03-panel{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;margin-top:48px;opacity:1;transition:opacity 200ms ease}
@@ -2834,11 +2878,13 @@
     </div>
 
     <!-- Tab strip (desktop) -->
-    <div class="s03-strip">
-      <button class="s03-tab active" data-idx="0">Course Launch</button>
-      <button class="s03-tab" data-idx="1">ILT &amp; Hybrid</button>
-      <button class="s03-tab" data-idx="2">Multi-Location</button>
-      <button class="s03-tab" data-idx="3">Commerce &amp; Revenue</button>
+    <div style="text-align: center; width: 100%;">
+      <div class="s03-strip">
+        <button class="s03-tab active" data-idx="0"><i class="ti ti-calendar-event"></i> Automate &amp; Run ILT</button>
+        <button class="s03-tab" data-idx="1"><i class="ti ti-rocket"></i> Launch Courses Instantly</button>
+        <button class="s03-tab" data-idx="2"><i class="ti ti-git-branch"></i> Scale Multi-Location</button>
+        <button class="s03-tab" data-idx="3"><i class="ti ti-coin"></i> Grow Training Revenue</button>
+      </div>
     </div>
 
     <!-- Panel (desktop) -->
@@ -3452,28 +3498,28 @@
 /* ═══ S03: Tab data ═══ */
 const TABS = [
   {
-    label:"Course Launch", cat:"Rapid Content Creation",
-    h2:"Launch new courses and programs without bottlenecks",
-    desc:"Eliminate the delays and friction that slow your team down. SimpliTrain gives you the tools to go from idea to live training — faster than ever.",
-    bullets:["Go from idea to course in days, not weeks","Standardize learning paths across programs","Maintain consistent quality across all content","Scale content creation without increasing effort"],
-    cta:{label:"Explore Course Authoring →",href:"/features/ai-course-authoring/"}
-  },
-  {
-    label:"ILT & Hybrid", cat:"Training Operations",
+    label:"Automate & Run ILT", icon:"ti-calendar-event", cat:"Training Operations",
     h2:"Run instructor-led and hybrid training at scale, seamlessly",
     desc:"Manage every session, trainer, and venue from one place — whether you're running in-person, virtual, or hybrid programs.",
     bullets:["Fill cohorts efficiently and reduce scheduling conflicts","Maximize trainer utilization across sessions","Deliver consistent learning experiences—online or offline","Eliminate manual coordination and last-minute firefighting"],
     cta:{label:"Explore Training Management →",href:"/features/training-management/"}
   },
   {
-    label:"Multi-Location", cat:"Operational Control",
+    label:"Launch Courses Instantly", icon:"ti-rocket", cat:"Rapid Content Creation",
+    h2:"Launch new courses and programs without bottlenecks",
+    desc:"Eliminate the delays and friction that slow your team down. SimpliTrain gives you the tools to go from idea to live training — faster than ever.",
+    bullets:["Go from idea to course in days, not weeks","Standardize learning paths across programs","Maintain consistent quality across all content","Scale content creation without increasing effort"],
+    cta:{label:"Explore Course Authoring →",href:"/features/ai-course-authoring/"}
+  },
+  {
+    label:"Scale Multi-Location", icon:"ti-git-branch", cat:"Operational Control",
     h2:"Streamline complexity across locations, teams, and workflows",
     desc:"Whether you run one academy or many, SimpliTrain gives you full control with the flexibility to manage every center, team, and workflow centrally.",
     bullets:["Manage multi-location and franchise operations with ease","Optimize use of trainers, classrooms, and resources","Automate repetitive workflows and reduce admin overhead","Keep every stakeholder aligned with real-time updates"],
     cta:{label:"Explore Enterprise Learning →",href:"/features/enterprise-learning-software/"}
   },
   {
-    label:"Commerce & Revenue", cat:"Revenue Growth",
+    label:"Grow Training Revenue", icon:"ti-coin", cat:"Revenue Growth",
     h2:"Monetize your programs with built-in commerce capabilities",
     desc:"Turn your training expertise into a sustainable revenue engine. SimpliTrain's built-in commerce tools handle everything from storefront to payment.",
     bullets:["Sell courses directly with a seamless buying experience","Increase revenue through bundles, subscriptions, and pricing strategies","Expand into corporate training and B2B deals","Simplify payments, invoicing, and financial tracking"],
@@ -3536,7 +3582,8 @@ TABS.forEach((t,i)=>{
   const bullets = t.bullets.map(b=>`<li><i class="ti ti-circle-check ck"></i>${b}</li>`).join('');
   item.innerHTML = `
     <button class="s03-mob-trigger${i===0?' open':''}">
-      ${t.label}<i class="ti ti-chevron-down"></i>
+      <span><i class="ti ${t.icon}" style="margin-right: 8px; color: #7c3aed;"></i>${t.label}</span>
+      <i class="ti ti-chevron-down"></i>
     </button>
     <div class="s03-mob-body${i===0?' open':''}">
       <div class="s03-mob-content">
