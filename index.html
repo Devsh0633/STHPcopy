@@ -1562,47 +1562,19 @@
       line-height: 1.6;
       margin-top: 20px;
     }
-    .s-problem-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 28px;
-    }
-    .s-problem-card {
+    .s-problem-infographic-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.08);
       background: #ffffff;
       border: 1px solid #e2e8f0;
-      border-radius: 16px;
-      padding: 32px 24px;
-      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
-      transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), 
-                  box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .s-problem-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
-    }
-    .s-problem-icon-wrap {
-      width: 48px;
-      height: 48px;
-      background: #fff1f2;
-      color: #e11d48;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      font-size: 24px;
-    }
-    .s-problem-ch3 {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--dark);
-      line-height: 1.35;
-      margin-bottom: 12px;
-    }
-    .s-problem-cbody {
-      font-size: 14.5px;
-      color: #64748b;
-      line-height: 1.55;
+    .s-problem-infographic-img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     /* ══════════════════════════════════════
@@ -1645,6 +1617,20 @@
       color: #94a3b8;
       line-height: 1.6;
       margin-top: 20px;
+    }
+    .s-platform-mockup-wrap {
+      max-width: 1000px;
+      margin: 0 auto 80px;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 144, 255, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+    .s-platform-mockup-img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
     .s-platform-flow {
       display: grid;
@@ -1784,50 +1770,50 @@
       line-height: 1.6;
       margin-top: 20px;
     }
-    .s-modular-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-    .s-modular-card {
-      background: #ffffff;
-      border: 1.5px solid #f1f5f9;
-      border-radius: 20px;
-      padding: 44px 36px;
-      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.015);
-      transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1), 
-                  box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1),
-                  border-color 350ms cubic-bezier(0.16, 1, 0.3, 1);
+    .s-modular-zigzag {
       display: flex;
       flex-direction: column;
+      gap: 100px;
+    }
+    .s-modular-row {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+    .s-modular-row.reverse {
+      flex-direction: row-reverse;
+    }
+    .s-modular-content {
+      flex: 1;
+      padding: 40px;
+      border-radius: 24px;
+      border: 1.5px solid transparent;
+      transition: border-color 300ms ease, box-shadow 300ms ease;
     }
     
-    /* Soft background color variations for each card */
-    .s-modular-card.lms {
+    .s-modular-image {
+      flex: 1.2;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.06);
+    }
+    .s-modular-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+    
+    .s-modular-content.lms {
       background: rgba(26, 82, 160, 0.015);
       border-color: rgba(26, 82, 160, 0.05);
     }
-    .s-modular-card.assess {
+    .s-modular-content.assess {
       background: rgba(168, 85, 247, 0.015);
       border-color: rgba(168, 85, 247, 0.05);
     }
-    .s-modular-card.allinone {
+    .s-modular-content.allinone {
       background: rgba(0, 191, 179, 0.015);
       border-color: rgba(0, 191, 179, 0.05);
-    }
-    
-    .s-modular-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 16px 36px rgba(15, 23, 42, 0.06);
-    }
-    .s-modular-card.lms:hover {
-      border-color: rgba(26, 82, 160, 0.2);
-    }
-    .s-modular-card.assess:hover {
-      border-color: rgba(168, 85, 247, 0.2);
-    }
-    .s-modular-card.allinone:hover {
-      border-color: rgba(0, 191, 179, 0.2);
     }
     
     .s-modular-icon-wrap {
@@ -1837,43 +1823,44 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 32px;
+      margin-bottom: 24px;
       font-size: 26px;
-      transition: transform 300ms ease;
     }
-    .s-modular-card:hover .s-modular-icon-wrap {
-      transform: scale(1.08);
-    }
-    
-    .s-modular-card.lms .s-modular-icon-wrap {
+    .s-modular-content.lms .s-modular-icon-wrap {
       background: var(--light-blue);
       color: var(--blue);
     }
-    .s-modular-card.assess .s-modular-icon-wrap {
+    .s-modular-content.assess .s-modular-icon-wrap {
       background: #f3e8ff;
       color: #a855f7;
     }
-    .s-modular-card.allinone .s-modular-icon-wrap {
+    .s-modular-content.allinone .s-modular-icon-wrap {
       background: var(--light-teal);
       color: var(--teal);
     }
     
     .s-modular-ch3 {
-      font-size: 20px;
-      font-weight: 700;
+      font-size: 26px;
+      font-weight: 800;
       color: var(--dark);
-      margin-bottom: 14px;
-      line-height: 1.35;
+      margin-bottom: 16px;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
     }
     .s-modular-cbody {
-      font-size: 15px;
+      font-size: 16px;
       color: #475569;
       line-height: 1.6;
     }
     @media(max-width: 1024px) {
-      .s-modular-grid {
-        grid-template-columns: 1fr;
-        gap: 28px;
+      .s-modular-zigzag {
+        gap: 60px;
+      }
+      .s-modular-row, .s-modular-row.reverse {
+        flex-direction: column;
+      }
+      .s-modular-content, .s-modular-image {
+        width: 100%;
       }
     }
 
@@ -1904,6 +1891,20 @@
       color: #475569;
       line-height: 1.6;
       margin-top: 20px;
+    }
+    .s-comparison-diagram-wrap {
+      max-width: 800px;
+      margin: 0 auto 64px;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.05);
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+    }
+    .s-comparison-diagram-img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
     .s-comparison-table-wrap {
       width: 100%;
@@ -2090,28 +2091,18 @@
       color: #a855f7;
     }
     
-    .s-buyers-icon-wrap {
-      width: 56px;
-      height: 56px;
-      border-radius: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      font-size: 26px;
+    .s-buyers-persona-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      object-position: top center;
+      border-radius: 16px;
+      margin-bottom: 28px;
+      background: #f8fafc;
       transition: transform 300ms ease;
     }
-    .s-buyers-card:hover .s-buyers-icon-wrap {
-      transform: scale(1.08);
-    }
-    
-    .s-buyers-card.training-providers .s-buyers-icon-wrap {
-      background: var(--light-blue);
-      color: var(--blue);
-    }
-    .s-buyers-card.enterprise-ld .s-buyers-icon-wrap {
-      background: #f3e8ff;
-      color: #a855f7;
+    .s-buyers-card:hover .s-buyers-persona-img {
+      transform: scale(1.02);
     }
     
     .s-buyers-ch3 {
@@ -2809,34 +2800,8 @@
       <p class="s-problem-sub">Most training teams are duct-taping a TMS to an LMS to spreadsheets to a separate assessment tool. Every new program, location, or trainer multiplies the chaos.</p>
     </div>
     
-    <div class="s-problem-grid">
-      <!-- Card 1 -->
-      <div class="s-problem-card">
-        <div class="s-problem-icon-wrap"><i class="ti ti-puzzle"></i></div>
-        <h3 class="s-problem-ch3">The patchwork tax</h3>
-        <p class="s-problem-cbody">Scheduling lives in one tool, content in another, assessments in a third, and reporting that never reconciles.</p>
-      </div>
-      
-      <!-- Card 2 -->
-      <div class="s-problem-card">
-        <div class="s-problem-icon-wrap"><i class="ti ti-refresh-alert"></i></div>
-        <h3 class="s-problem-ch3">Manual coordination that never goes away</h3>
-        <p class="s-problem-cbody">Trainers, rooms, cohorts, and learner comms still moving through email and spreadsheets.</p>
-      </div>
-      
-      <!-- Card 3 -->
-      <div class="s-problem-card">
-        <div class="s-problem-icon-wrap"><i class="ti ti-armchair-off"></i></div>
-        <h3 class="s-problem-ch3">Empty seats, underutilized trainers</h3>
-        <p class="s-problem-cbody">No live view of capacity across locations, languages, or programs.</p>
-      </div>
-      
-      <!-- Card 4 -->
-      <div class="s-problem-card">
-        <div class="s-problem-icon-wrap"><i class="ti ti-help"></i></div>
-        <h3 class="s-problem-ch3">No single source of truth</h3>
-        <p class="s-problem-cbody">Leadership asks "how many people did we train this quarter?" and three teams give three answers.</p>
-      </div>
+    <div class="s-problem-infographic-wrap">
+      <img src="./infographic_before_after.png" alt="Before vs After: Disconnected Chaos to Unified B2B SaaS Solution" class="s-problem-infographic-img">
     </div>
   </div>
 </section>
@@ -2850,6 +2815,10 @@
     <div class="s-platform-head">
       <h2 class="s-platform-h2">One platform. <span class="accent">The full ILT lifecycle.</span></h2>
       <p class="s-platform-sub">From planning a session to certifying a learner - every step in one system, with the depth you'd expect from a specialist tool.</p>
+    </div>
+    
+    <div class="s-platform-mockup-wrap">
+      <img src="./dashboard_mockup.png" alt="SimpliTrain Dashboard Mockup" class="s-platform-mockup-img">
     </div>
     
     <div class="s-platform-flow">
@@ -2911,26 +2880,41 @@
       <p class="s-modular-sub">SimpliTrain's ILT operations engine is the core. The LMS, assessments, and authoring are native - turn them on when you're ready, or integrate with the tools you already own.</p>
     </div>
     
-    <div class="s-modular-grid">
-      <!-- Column 1 -->
-      <div class="s-modular-card lms">
-        <div class="s-modular-icon-wrap"><i class="ti ti-git-merge"></i></div>
-        <h3 class="s-modular-ch3">Already have an LMS?</h3>
-        <p class="s-modular-cbody">Keep it. SimpliTrain integrates seamlessly with Cornerstone, Docebo, Absorb, SAP SuccessFactors, and standard SCORM/xAPI sources.</p>
+    <div class="s-modular-zigzag">
+      <!-- Row 1 -->
+      <div class="s-modular-row">
+        <div class="s-modular-content lms">
+          <div class="s-modular-icon-wrap"><i class="ti ti-git-merge"></i></div>
+          <h3 class="s-modular-ch3">Already have an LMS?</h3>
+          <p class="s-modular-cbody">Keep it. SimpliTrain integrates seamlessly with Cornerstone, Docebo, Absorb, SAP SuccessFactors, and standard SCORM/xAPI sources.</p>
+        </div>
+        <div class="s-modular-image">
+          <img src="./modular_commerce.png" alt="Commerce and Revenue Dashboard">
+        </div>
       </div>
       
-      <!-- Column 2 -->
-      <div class="s-modular-card assess">
-        <div class="s-modular-icon-wrap"><i class="ti ti-plug"></i></div>
-        <h3 class="s-modular-ch3">Already have an assessment tool?</h3>
-        <p class="s-modular-cbody">Plug it in. Or switch to SimpliAssess when you're ready to consolidate all assessments and scoring in a single system.</p>
+      <!-- Row 2 -->
+      <div class="s-modular-row reverse">
+        <div class="s-modular-content assess">
+          <div class="s-modular-icon-wrap"><i class="ti ti-plug"></i></div>
+          <h3 class="s-modular-ch3">Already have an assessment tool?</h3>
+          <p class="s-modular-cbody">Plug it in. Or switch to SimpliAssess when you're ready to consolidate all assessments and scoring in a single system.</p>
+        </div>
+        <div class="s-modular-image">
+          <img src="./modular_portal.png" alt="Branded Learning Portal Dashboard">
+        </div>
       </div>
       
-      <!-- Column 3 -->
-      <div class="s-modular-card allinone">
-        <div class="s-modular-icon-wrap"><i class="ti ti-stack-2"></i></div>
-        <h3 class="s-modular-ch3">Need everything in one place?</h3>
-        <p class="s-modular-cbody">Run your full learning stack on SimpliTrain, providing one contract, one single source of truth, and one expert team to support you.</p>
+      <!-- Row 3 -->
+      <div class="s-modular-row">
+        <div class="s-modular-content allinone">
+          <div class="s-modular-icon-wrap"><i class="ti ti-stack-2"></i></div>
+          <h3 class="s-modular-ch3">Need everything in one place?</h3>
+          <p class="s-modular-cbody">Run your full learning stack on SimpliTrain, providing one contract, one single source of truth, and one expert team to support you.</p>
+        </div>
+        <div class="s-modular-image">
+          <img src="./modular_progress.png" alt="Learner Progress Dashboard">
+        </div>
       </div>
     </div>
   </div>
@@ -2945,6 +2929,10 @@
     <div class="s-comparison-head">
       <h2 class="s-comparison-h2">The honest comparison.</h2>
       <p class="s-comparison-sub">Most ILT platforms force a trade-off: deep ops or full learning lifecycle. SimpliTrain gives you both, without forcing you to use everything on day one.</p>
+    </div>
+    
+    <div class="s-comparison-diagram-wrap">
+      <img src="./diagram_ecosystem.png" alt="SimpliTrain Ecosystem vs Standard LMS" class="s-comparison-diagram-img">
     </div>
     
     <div class="s-comparison-table-wrap">
@@ -3085,9 +3073,7 @@
       <!-- Card 1: Professional Training Companies -->
       <div class="s-buyers-card training-providers">
         <div class="s-buyers-badge">For Professional Training Companies</div>
-        <div class="s-buyers-icon-wrap">
-          <i class="ti ti-building-store"></i>
-        </div>
+        <img src="./persona_business.png" alt="Training Business Leader" class="s-buyers-persona-img">
         <h3 class="s-buyers-ch3">Run your training business at scale.</h3>
         <p class="s-buyers-cbody">
           Multi-tenant operations for multiple locations and brands. Cohort and batch planning across languages. Customer and partner portals. Revenue and utilization tracking per trainer, course, and location. Whether you train 500 or 50,000 learners a year, SimpliTrain runs the business.
@@ -3100,9 +3086,7 @@
       <!-- Card 2: Enterprise L&D Teams -->
       <div class="s-buyers-card enterprise-ld">
         <div class="s-buyers-badge">For Enterprise L&amp;D Teams</div>
-        <div class="s-buyers-icon-wrap">
-          <i class="ti ti-shield-check"></i>
-        </div>
+        <img src="./persona_ops.png" alt="Enterprise L&D Operations Manager" class="s-buyers-persona-img">
         <h3 class="s-buyers-ch3">Built for compliance-heavy industries.</h3>
         <p class="s-buyers-cbody">
           Built for industries where ILT is non-negotiable, manufacturing, healthcare, automotive, IT. Compliance and certification tracking. Multi-site, multi-shift operations. Vendor and contractor training. Audit-ready reporting across business units. Integrate with your HRIS and existing LMS, or run the full stack on SimpliTrain.
